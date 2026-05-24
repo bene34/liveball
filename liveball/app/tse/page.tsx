@@ -99,7 +99,6 @@ const PPPTable = () => {
 
   return (
     <div style={{ padding: "2rem", maxWidth: "1000px", margin: "0 auto", fontFamily: "system-ui, sans-serif" }}>
-      {/* Header */}
       <div style={{ marginBottom: "1.5rem" }}>
         <h1 style={{ fontSize: "22px", fontWeight: 500, margin: 0, letterSpacing: "-0.3px" }}>TSE</h1>
         <p style={{ fontSize: "14px", color: "#6b7280", marginTop: "4px" }}>
@@ -107,7 +106,6 @@ const PPPTable = () => {
         </p>
       </div>
 
-      {/* Search */}
       <div style={{ marginBottom: "1rem" }}>
         <div style={{ position: "relative", maxWidth: "300px" }}>
           <span style={{ position: "absolute", left: "10px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af", fontSize: "15px" }}>
@@ -132,9 +130,8 @@ const PPPTable = () => {
         </div>
       </div>
 
-      {/* Table */}
-      <div style={{ border: "1px solid #f3f4f6", borderRadius: "12px", overflow: "hidden", background: "#fff" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px", tableLayout: "fixed" }}>
+      <div style={{ border: "1px solid #f3f4f6", borderRadius: "12px", overflowX: "auto", background: "#fff" }}>
+        <table style={{ width: "100%", minWidth: "620px", borderCollapse: "collapse", fontSize: "14px", tableLayout: "fixed" }}>
           <colgroup>
             <col style={{ width: "40px" }} />
             <col style={{ width: "26%" }} />
@@ -178,7 +175,7 @@ const PPPTable = () => {
                     <td style={{ ...tdStyle, textAlign: "right", fontFamily: "monospace" }}>{row.GamesPlayed}</td>
                     <td style={{ ...tdStyle, textAlign: "right" }}>
                       <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "6px" }}>
-                        <div style={{ width: `${barW}px`, height: "4px", borderRadius: "2px", background: "#bfdbfe" }} />
+                        <div style={{ width: `${barW}px`, height: "4px", borderRadius: "2px", background: "#bfdbfe", flexShrink: 0 }} />
                         <span style={{ fontFamily: "monospace", minWidth: "38px", textAlign: "right" }}>{row.PPP.toFixed(3)}</span>
                       </div>
                     </td>
@@ -196,7 +193,6 @@ const PPPTable = () => {
         </table>
       </div>
 
-      {/* Pagination */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "1rem" }}>
         <span style={{ fontSize: "13px", color: "#9ca3af" }}>
           {filtered.length} players · page {page + 1} of {totalPages}
@@ -251,6 +247,7 @@ const thStyle: React.CSSProperties = {
   borderBottom: "1px solid #f3f4f6",
   letterSpacing: "0",
   userSelect: "none",
+  whiteSpace: "nowrap",
 };
 
 const tdStyle: React.CSSProperties = {
