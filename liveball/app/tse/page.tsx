@@ -66,7 +66,6 @@ const PPPTable = () => {
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ROWS_PER_PAGE));
   const pageData = filtered.slice(page * ROWS_PER_PAGE, (page + 1) * ROWS_PER_PAGE);
-  const maxPPP = data.length ? Math.max(...data.map((d) => d.PPP)) : 1;
   const minRelative = data.length ? Math.min(...data.map((d) => d.RelativeTSE)) : -1;
   const maxRelative = data.length ? Math.max(...data.map((d) => d.RelativeTSE)) : 1;
 
@@ -166,7 +165,6 @@ const PPPTable = () => {
             ) : (
               pageData.map((row, idx) => {
                 const globalRank = page * ROWS_PER_PAGE + idx + 1;
-                const barW = Math.round((row.PPP / maxPPP) * 40);
                 const relStyle = relativeTSEStyle(row.RelativeTSE);
                 return (
                   <tr key={idx} style={{ background: idx % 2 === 0 ? "#fff" : "#fafafa" }}>
@@ -174,10 +172,7 @@ const PPPTable = () => {
                     <td style={{ ...tdStyle, fontWeight: 500 }}>{row.Name}</td>
                     <td style={{ ...tdStyle, textAlign: "right", fontFamily: "monospace" }}>{row.GamesPlayed}</td>
                     <td style={{ ...tdStyle, textAlign: "right" }}>
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "6px" }}>
-                        <div style={{ width: `${barW}px`, height: "4px", borderRadius: "2px", background: "#bfdbfe", flexShrink: 0 }} />
-                        <span style={{ fontFamily: "monospace", minWidth: "38px", textAlign: "right" }}>{row.PPP.toFixed(3)}</span>
-                      </div>
+<span style={{ fontFamily: "monospace", minWidth: "38px", textAlign: "right" }}>{row.PPP.toFixed(3)}</span>
                     </td>
                     <td style={{ ...tdStyle, textAlign: "right", fontFamily: "monospace", fontWeight: 500, ...relStyle }}>
                       {row.RelativeTSE > 0 ? "+" : ""}{row.RelativeTSE.toFixed(3)}

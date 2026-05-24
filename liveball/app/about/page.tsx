@@ -1,7 +1,8 @@
 export default function About() {
   return (
     <main style={{ minHeight: "100vh", fontFamily: "system-ui, sans-serif", background: "#f9fafb", padding: "3rem 2rem" }}>
-      <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "720px", margin: "0 auto", overflowWrap: "break-word" }}>
+
 
         <h1 style={{ fontSize: "28px", fontWeight: 600, color: "#111827", margin: "0 0 12px 0", letterSpacing: "-0.4px" }}>
           True Scoring Efficiency
