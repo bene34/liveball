@@ -1,26 +1,33 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <div className="w-full">
-  <div className="navbar bg-base-100">
-    <div className="flex justify-between items-center w-full relative">
-      <div className="justify-start">
-        <a className="btn btn-ghost text-neutral-content text-xl">LiveBall</a>
-      </div>
-      <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-4">
-            <Link href="/ppp">
-              <div className="btn btn-ghost text-neutral-content cursor-pointer">Player PPP</div>
-            </Link>
-        <a className="btn btn-ghost text-neutral-content cursor-pointer">Film</a>
-        <a className="btn btn-ghost text-neutral-content cursor-pointer">About</a>
+    <div style={{ width: "100%", borderBottom: "1px solid #f3f4f6", background: "#fff" }}>
+      <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", height: "56px" }}>
+        <Link href="/" style={{ fontSize: "15px", fontWeight: 500, color: "#111827", fontFamily: "system-ui, sans-serif", textDecoration: "none" }}>
+          HoopsDunker32
+        </Link>
+        <div style={{ display: "flex", gap: "4px", fontFamily: "system-ui, sans-serif" }}>
+          <Link href="/tse" style={navLinkStyle}>
+            TSE
+          </Link>
+          <Link href="/playmaking" style={navLinkStyle}>Playmaking</Link>
+          <Link href="/about" style={navLinkStyle}>About</Link>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-      
-  )
-}
+  );
+};
 
-export default NavBar
+const navLinkStyle: React.CSSProperties = {
+  padding: "6px 12px",
+  fontSize: "14px",
+  color: "#6b7280",
+  borderRadius: "8px",
+  cursor: "pointer",
+  textDecoration: "none",
+  transition: "background 0.15s, color 0.15s",
+};
+
+export default NavBar;
