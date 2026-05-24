@@ -11,7 +11,7 @@ export default function Home() {
       </p>
 
       <div style={{ display: "flex", gap: "12px" }}>
-        <Link href="/ppp" style={cardStyle}>
+        <Link href="/tse" style={cardStyle}>
           <span style={{ fontSize: "13px", fontWeight: 500, color: "#111827" }}>TSE</span>
           <span style={{ fontSize: "12px", color: "#9ca3af", marginTop: "4px" }}>True Scoring Efficiency</span>
         </Link>

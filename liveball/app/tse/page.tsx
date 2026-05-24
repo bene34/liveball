@@ -91,19 +91,19 @@ const PPPTable = () => {
     { key: "Name", label: "Player" },
     { key: "GamesPlayed", label: "GP" },
     { key: "PPP", label: "TSE" },
-    { key: "RelativeTSE", label: "Rel. TSE" },
+    { key: "RelativeTSE", label: "Relative TSE" },
     { key: "PtsPer75", label: "Pts/75" },
     { key: "TruePointsPer75", label: "True Pts/75" },
-    { key: "ScoringTurnoversPer75", label: "Scor. TOV/75" },
+    { key: "ScoringTurnoversPer75", label: "Scoring TOV/75" },
   ];
 
   return (
     <div style={{ padding: "2rem", maxWidth: "1000px", margin: "0 auto", fontFamily: "system-ui, sans-serif" }}>
       {/* Header */}
       <div style={{ marginBottom: "1.5rem" }}>
-        <h1 style={{ fontSize: "22px", fontWeight: 500, margin: 0, letterSpacing: "-0.3px" }}>Player TSE</h1>
+        <h1 style={{ fontSize: "22px", fontWeight: 500, margin: 0, letterSpacing: "-0.3px" }}>TSE</h1>
         <p style={{ fontSize: "14px", color: "#6b7280", marginTop: "4px" }}>
-          2025-2026 True Shooting Efficiency
+          TSE Explained In About Section
         </p>
       </div>
 
