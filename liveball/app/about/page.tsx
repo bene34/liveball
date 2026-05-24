@@ -19,7 +19,10 @@ export default function About() {
             <p style={bodyText}><strong>The Free Throw Estimate</strong></p>
             <p style={{ ...bodyText, marginTop: "6px" }}>
               The most commonly cited advanced scoring efficiency statistic is true shooting (Formula found here:{" "}
-              <a href="https://en.wikipedia.org/wiki/True_shooting_percentage" style={linkStyle} target="_blank" rel="noopener noreferrer">
+              <a href="https://en.wikipedia.org/wiki/True_shooting_percentage" 
+                style={{ ...linkStyle, wordBreak: "break-all" }} 
+                target="_blank" 
+                rel="noopener noreferrer">
                 https://en.wikipedia.org/wiki/True_shooting_percentage
               </a>
               ). It does a great job of capturing the efficiency of a player's shot attempts, but still serves as an estimate rather than reality (TPE also has more granular minor estimates covered in the future extension section, but gets closer to reality). The culprit for this is the <strong>0.44 multiplier</strong> appended to free-throw attempts. It exists to account for the amount of possessions used on free throws, which eliminates technical free throws as well as and-1s. However, we have the actual play-by-play data available on these free throws, meaning we do not need this estimator.
