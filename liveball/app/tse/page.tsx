@@ -124,6 +124,7 @@ const PPPTable = () => {
               background: "#fff",
               fontFamily: "inherit",
               boxSizing: "border-box",
+              color: "#111827",  
             }}
           />
         </div>
