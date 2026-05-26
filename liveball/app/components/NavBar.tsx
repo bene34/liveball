@@ -6,7 +6,7 @@ const NavBar = () => {
     <div style={{ width: "100%", borderBottom: "1px solid #f3f4f6", background: "#fff" }}>
       <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 1rem", display: "flex", alignItems: "center", justifyContent: "space-between", height: "52px" }}>
         <Link href="/" style={{ fontSize: "15px", fontWeight: 500, color: "#111827", fontFamily: "system-ui, sans-serif", textDecoration: "none", whiteSpace: "nowrap" }}>
-          HoopsDunker32
+          Hoops Measure
         </Link>
         <div style={{ display: "flex", gap: "2px", fontFamily: "system-ui, sans-serif" }}>
           <Link href="/tse" style={navLinkStyle}>TSE</Link>

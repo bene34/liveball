@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "system-ui, sans-serif", padding: "2rem" }}>
       <h1 style={{ fontSize: "clamp(28px, 8vw, 42px)", fontWeight: 500, color: "#111827", margin: 0, letterSpacing: "-0.5px", textAlign: "center" }}>
-        HoopsDunker32
+        Hoops Measure
       </h1>
       <p style={{ fontSize: "16px", color: "#6b7280", marginTop: "12px", marginBottom: "2.5rem", textAlign: "center" }}>
         NBA Formulas 
