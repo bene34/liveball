@@ -91,16 +91,24 @@ const PPPTable = () => {
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ROWS_PER_PAGE));
   const pageData = filtered.slice(page * ROWS_PER_PAGE, (page + 1) * ROWS_PER_PAGE);
-  const minRelative = filtered.length ? Math.min(...filtered.map((d) => d.RelativeTSE)) : -1;
-  const maxRelative = filtered.length ? Math.max(...filtered.map((d) => d.RelativeTSE)) : 1;
 
   const arrow = (key: SortKey) => (key === sortKey ? (sortDir === "asc" ? " ▲" : " ▼") : "");
 
   const relativeTSEStyle = (val: number): React.CSSProperties => {
-    const t = (val - minRelative) / (maxRelative - minRelative);
+    const clamped = Math.max(-26, Math.min(26, val));
+    const t = (clamped + 26) / 52;
     const r = Math.round(220 - t * 200);
     const g = Math.round(30 + t * 190);
     const b = 30;
+    return { color: `rgb(${r}, ${g}, ${b})` };
+  };
+
+  const tseAddStyle = (val: number): React.CSSProperties => {
+    const clamped = Math.max(-3.2, Math.min(3.2, val));
+    const t = (clamped + 3.2) / 6.4; // 0 at -3.2, 0.5 at 0, 1 at +3.2
+    const r = 255;
+    const g = Math.round(200 - t * 130); // 200 (light orange) at min, 70 (deep orange) at max
+    const b = Math.round(100 - t * 100); // fades out toward 0
     return { color: `rgb(${r}, ${g}, ${b})` };
   };
 
@@ -203,7 +211,6 @@ const PPPTable = () => {
             ) : (
               pageData.map((row, idx) => {
                 const globalRank = page * ROWS_PER_PAGE + idx + 1;
-                const relStyle = relativeTSEStyle(row.RelativeTSE);
                 return (
                   <tr key={idx} style={{ background: idx % 2 === 0 ? "#fff" : "#fafafa" }}>
                     <td style={{ ...tdStyle, color: "#9ca3af", fontSize: "12px", fontFamily: "monospace" }}>{globalRank}</td>
@@ -225,7 +232,8 @@ const PPPTable = () => {
                             fontFamily: numeric ? "monospace" : "inherit",
                             fontWeight: key === "Name" ? 500 : undefined,
                             whiteSpace: key === "Season" ? "nowrap" : undefined,
-                            ...(key === "RelativeTSE" ? relStyle : {}),
+                            ...(key === "RelativeTSE" ? relativeTSEStyle(row.RelativeTSE) : {}),
+                            ...(key === "TSEAddPer75" ? tseAddStyle(row.TSEAddPer75) : {}),
                           }}
                         >
                           {display}
