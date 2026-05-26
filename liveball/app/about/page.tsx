@@ -25,7 +25,7 @@ export default function About() {
                 rel="noopener noreferrer">
                 https://en.wikipedia.org/wiki/True_shooting_percentage
               </a>
-              ). It does a great job of capturing the efficiency of a player's shot attempts, but still serves as an estimate rather than reality (TPE also has more granular minor estimates covered in the future extension section, but gets closer to reality). The culprit for this is the <strong>0.44 multiplier</strong> appended to free-throw attempts. It exists to account for the amount of possessions used on free throws, which eliminates technical free throws as well as and-1s. However, we have the actual play-by-play data available on these free throws, meaning we do not need this estimator.
+              ). It does a great job of capturing the efficiency of a player's shot attempts, but still serves as an estimate rather than reality (TPE also has more granular minor estimates covered in the future extension section, but gets closer to reality). The culprit for this is the 0.44 multiplier appended to free-throw attempts. It exists to account for the amount of possessions used on free throws, which eliminates technical free throws as well as and-1s. However, we have the actual play-by-play data available on these free throws, meaning we do not need this estimator.
             </p>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function About() {
         <p style={bodyText}>
           I will not publish the exact formula right now (DM me{" "}
           <a href="https://twitter.com/hoopsdunker32" style={linkStyle} target="_blank" rel="noopener noreferrer">@hoopsdunker32</a>
-          {" "}if you're curious), but the general calculations are important to know. The statistic uses two components, <strong>true points (TP)</strong> and <strong>true scoring possessions used (TSPU)</strong>, and then divides TP by TPU and multiples by 0.5 (Multiplies by 0.5 to match the true shooting scale).
+          {" "}if you're curious), but the general calculations are important to know. The statistic uses two components, true points (TP) and true scoring possessions used (TSPU), and then divides TP by TPU and multiples by 0.5 (Multiplies by 0.5 to match the true shooting scale).
         </p>
         <p style={{ ...bodyText, marginTop: "14px" }}>
           <strong>True Points:</strong> This statistic adds up your points scored and the expected second-chance points off of your missed shots. It does not include technical free throws.
