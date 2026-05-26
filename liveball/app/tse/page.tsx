@@ -16,7 +16,7 @@ type Player = {
   PtsPer75: number;
   TruePointsPer75: number;
   ScoringTurnoversPer75: number;
-  MinutesPlayed: number;
+  Minutes: number;
   TrueScoringPossessionsPer75: number;
   TSEAddPer75: number;
 };
@@ -46,7 +46,7 @@ const PPPTable = () => {
           PtsPer75: Number(p.PtsPer75),
           TruePointsPer75: Number(p.TruePointsPer75),
           ScoringTurnoversPer75: Number(p.ScoringTurnoversPer75),
-          MinutesPlayed: Number(p.SecondsPlayed) / 60,
+          Minutes: Number(p.Minutes),
           TrueScoringPossessionsPer75: Number(p.TrueScoringPossessionsPer75),
           TSEAddPer75: Number(p.TSEAddPer75),
         }));
@@ -119,13 +119,13 @@ const PPPTable = () => {
   const columns: { key: SortKey; label: string; numeric: boolean }[] = [
     { key: "Season", label: "Season", numeric: false },
     { key: "Name", label: "Player", numeric: false },
-    { key: "MinutesPlayed", label: "Minutes", numeric: true },
+    { key: "Minutes", label: "Minutes", numeric: true },
     { key: "GamesPlayed", label: "GP", numeric: true },
     { key: "PPP", label: "TSE", numeric: true },
     { key: "RelativeTSE", label: "Relative TSE", numeric: true },
-    { key: "PtsPer75", label: "Pts / 75", numeric: true },
-    { key: "TruePointsPer75", label: "True Pts / 75", numeric: true },
-    { key: "TrueScoringPossessionsPer75", label: "True Scoring Poss / 75", numeric: true },
+    { key: "PtsPer75", label: "Points / 75", numeric: true },
+    { key: "TruePointsPer75", label: "True Points / 75", numeric: true },
+    { key: "TrueScoringPossessionsPer75", label: "True Scoring Possessions Used / 75", numeric: true },
     { key: "TSEAddPer75", label: "TSE Add / 75", numeric: true },
     { key: "ScoringTurnoversPer75", label: "Scoring TOV / 75", numeric: true },
   ];
@@ -211,8 +211,7 @@ const PPPTable = () => {
                       const val = row[key];
                       let display: string;
                       if (!numeric) display = String(val);
-                      else if (key === "GamesPlayed") display = String(Math.round(val as number));
-                      else if (key === "MinutesPlayed") display = Math.round(val as number).toString();
+                      else if (key === "GamesPlayed" || key === "Minutes") display = String(Math.round(val as number));
                       else if (key === "RelativeTSE") display = `${(val as number) > 0 ? "+" : ""}${(val as number).toFixed(3)}`;
                       else if (key === "ScoringTurnoversPer75") display = (val as number).toFixed(2);
                       else display = (val as number).toFixed(3);
@@ -225,6 +224,7 @@ const PPPTable = () => {
                             textAlign: numeric ? "right" : "left",
                             fontFamily: numeric ? "monospace" : "inherit",
                             fontWeight: key === "Name" ? 500 : undefined,
+                            whiteSpace: key === "Season" ? "nowrap" : undefined,
                             ...(key === "RelativeTSE" ? relStyle : {}),
                           }}
                         >
