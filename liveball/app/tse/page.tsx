@@ -4,6 +4,9 @@ import React, { useEffect, useState, useMemo } from "react";
 
 const ROWS_PER_PAGE = 20;
 
+const normalize = (str: string) =>
+  str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
 type Player = {
   Name: string;
   Season: string;
@@ -13,7 +16,7 @@ type Player = {
   PtsPer75: number;
   TruePointsPer75: number;
   ScoringTurnoversPer75: number;
-  Minutes: number;
+  MinutesPlayed: number;
   TrueScoringPossessionsPer75: number;
   TSEAddPer75: number;
 };
@@ -43,7 +46,7 @@ const PPPTable = () => {
           PtsPer75: Number(p.PtsPer75),
           TruePointsPer75: Number(p.TruePointsPer75),
           ScoringTurnoversPer75: Number(p.ScoringTurnoversPer75),
-          Minutes: Number(p.Minutes),
+          MinutesPlayed: Number(p.SecondsPlayed) / 60,
           TrueScoringPossessionsPer75: Number(p.TrueScoringPossessionsPer75),
           TSEAddPer75: Number(p.TSEAddPer75),
         }));
@@ -70,7 +73,7 @@ const PPPTable = () => {
   const filtered = useMemo(() => {
     let d = [...data];
     if (selectedSeason !== "all") d = d.filter((p) => p.Season === selectedSeason);
-    if (query) d = d.filter((p) => p.Name.toLowerCase().includes(query.toLowerCase()));
+    if (query) d = d.filter((p) => normalize(p.Name.toLowerCase()).includes(normalize(query.toLowerCase())));
     Object.entries(minFilters).forEach(([key, val]) => {
       if (val !== "" && val !== undefined) {
         const num = parseFloat(val);
@@ -116,7 +119,7 @@ const PPPTable = () => {
   const columns: { key: SortKey; label: string; numeric: boolean }[] = [
     { key: "Season", label: "Season", numeric: false },
     { key: "Name", label: "Player", numeric: false },
-    { key: "Minutes", label: "Minutes", numeric: true },
+    { key: "MinutesPlayed", label: "Minutes", numeric: true },
     { key: "GamesPlayed", label: "GP", numeric: true },
     { key: "PPP", label: "TSE", numeric: true },
     { key: "RelativeTSE", label: "Relative TSE", numeric: true },
@@ -135,7 +138,6 @@ const PPPTable = () => {
       </div>
 
       <div style={{ display: "flex", gap: "12px", marginBottom: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-        {/* search */}
         <div style={{ position: "relative" }}>
           <span style={{ position: "absolute", left: "10px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af", fontSize: "15px" }}>🔍</span>
           <input
@@ -147,7 +149,6 @@ const PPPTable = () => {
           />
         </div>
 
-        {/* season picker */}
         <select
           value={selectedSeason}
           onChange={(e) => { setSelectedSeason(e.target.value); setPage(0); }}
@@ -163,7 +164,6 @@ const PPPTable = () => {
       <div style={{ border: "1px solid #f3f4f6", borderRadius: "12px", overflowX: "auto", background: "#fff" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px" }}>
           <thead style={{ background: "#f9fafb" }}>
-            {/* column headers */}
             <tr>
               <th style={thStyle}>#</th>
               {columns.map(({ key, label, numeric }) => (
@@ -176,7 +176,6 @@ const PPPTable = () => {
                 </th>
               ))}
             </tr>
-            {/* min filter row */}
             <tr style={{ background: "#f9fafb" }}>
               <td style={{ padding: "4px 8px" }} />
               {columns.map(({ key, numeric }) => (
@@ -187,18 +186,7 @@ const PPPTable = () => {
                       placeholder="min"
                       value={minFilters[key] ?? ""}
                       onChange={(e) => updateMinFilter(key, e.target.value)}
-                      style={{
-                        width: "100%",
-                        padding: "3px 6px",
-                        fontSize: "11px",
-                        borderRadius: "5px",
-                        border: "1px solid #e5e7eb",
-                        fontFamily: "inherit",
-                        color: "#374151",
-                        background: "#fff",
-                        textAlign: "right",
-                        boxSizing: "border-box",
-                      }}
+                      style={{ width: "100%", padding: "3px 6px", fontSize: "11px", borderRadius: "5px", border: "1px solid #e5e7eb", fontFamily: "inherit", color: "#374151", background: "#fff", textAlign: "right", boxSizing: "border-box" }}
                     />
                   )}
                 </td>
@@ -223,7 +211,8 @@ const PPPTable = () => {
                       const val = row[key];
                       let display: string;
                       if (!numeric) display = String(val);
-                      else if (key === "GamesPlayed" || key === "Minutes") display = String(Math.round(val as number));
+                      else if (key === "GamesPlayed") display = String(Math.round(val as number));
+                      else if (key === "MinutesPlayed") display = Math.round(val as number).toString();
                       else if (key === "RelativeTSE") display = `${(val as number) > 0 ? "+" : ""}${(val as number).toFixed(3)}`;
                       else if (key === "ScoringTurnoversPer75") display = (val as number).toFixed(2);
                       else display = (val as number).toFixed(3);

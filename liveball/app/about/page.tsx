@@ -54,13 +54,16 @@ export default function About() {
         <p style={bodyText}>
           I will not publish the exact formula right now (DM me{" "}
           <a href="https://twitter.com/hoopsdunker32" style={linkStyle} target="_blank" rel="noopener noreferrer">@hoopsdunker32</a>
-          {" "}if you're curious), but the general calculations are important to know. The statistic uses two components, <strong>true points (TP)</strong> and <strong>true possessions used (TPU)</strong>, and then divides TP by TPU and multiples by 0.5 (Multiplies by 0.5 to match the true shooting scale).
+          {" "}if you're curious), but the general calculations are important to know. The statistic uses two components, <strong>true points (TP)</strong> and <strong>true scoring possessions used (TSPU)</strong>, and then divides TP by TPU and multiples by 0.5 (Multiplies by 0.5 to match the true shooting scale).
         </p>
         <p style={{ ...bodyText, marginTop: "14px" }}>
           <strong>True Points:</strong> This statistic adds up your points scored and the expected second-chance points off of your missed shots. It does not include technical free throws.
         </p>
         <p style={{ ...bodyText, marginTop: "10px" }}>
-          <strong>True Possessions Used:</strong> This statistic adds up your field goal attempts, possessions used on free throws, and scoring turnovers.
+          <strong>True Scoring Possessions Used:</strong> This statistic adds up your field goal attempts, possessions used on free throws, and scoring turnovers.
+        </p>
+        <p style={{ ...bodyText, marginTop: "10px" }}>
+          <strong>TSE Add:</strong> This statistic determines how many points you add (or subtract) through your TSE and TPSU. 
         </p>
 
         <h2 style={sectionHeader}>Future Extensions</h2>
