@@ -97,20 +97,20 @@ const PPPTable = () => {
   const relativeTSEStyle = (val: number): React.CSSProperties => {
     const clamped = Math.max(-26, Math.min(26, val));
     const t = (clamped + 26) / 52;
-    const r = Math.round(220 - t * 200);
-    const g = Math.round(30 + t * 190);
-    const b = 30;
+    const r = Math.round(255 - t * 255);
+    const g = Math.round(0 + t * 128);
+    const b = 0;
     return { color: `rgb(${r}, ${g}, ${b})` };
   };
 
   const tseAddStyle = (val: number): React.CSSProperties => {
     const clamped = Math.max(-3.2, Math.min(3.2, val));
     const t = (clamped + 3.2) / 6.4;
-    const r = Math.round(180 + t * 35);
-    const g = Math.round(140 + t * 30); 
-    const b = Math.round(20 - t * 20); 
+    const r = Math.round(238 - t * 20); 
+    const g = Math.round(232 - t * 67);   
+    const b = Math.round(170 - t * 138);
     return { color: `rgb(${r}, ${g}, ${b})` };
-};
+  };
 
   const updateMinFilter = (key: SortKey, val: string) => {
     setMinFilters((prev) => ({ ...prev, [key]: val }));
