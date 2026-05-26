@@ -106,9 +106,9 @@ const PPPTable = () => {
   const tseAddStyle = (val: number): React.CSSProperties => {
     const clamped = Math.max(-3.2, Math.min(3.2, val));
     const t = (clamped + 3.2) / 6.4;
-    const r = Math.round(180 + t * 35);   // 180 → 215
-    const g = Math.round(140 + t * 30);   // 140 → 170
-    const b = Math.round(20 - t * 20);    // 20 → 0
+    const r = Math.round(180 + t * 35);
+    const g = Math.round(140 + t * 30); 
+    const b = Math.round(20 - t * 20); 
     return { color: `rgb(${r}, ${g}, ${b})` };
 };
 
