@@ -33,6 +33,7 @@ const cardStyle: React.CSSProperties = {
   padding: "16px 20px",
   borderRadius: "12px",
   border: "1px solid #f3f4f6",
+  alignItems: "center",
   background: "#fff",
   textDecoration: "none",
   minWidth: "140px",
