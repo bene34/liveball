@@ -98,7 +98,7 @@ const PPPTable = () => {
     const clamped = Math.max(-26, Math.min(26, val));
     const t = (clamped + 26) / 52;
     const r = Math.round(255 - t * 255);
-    const g = Math.round(0 + t * 128);
+    const g = Math.round(0 + t * 200);
     const b = 0;
     return { color: `rgb(${r}, ${g}, ${b})` };
   };
@@ -106,9 +106,9 @@ const PPPTable = () => {
   const tseAddStyle = (val: number): React.CSSProperties => {
     const clamped = Math.max(-3.2, Math.min(3.2, val));
     const t = (clamped + 3.2) / 6.4;
-    const r = Math.round(238 - t * 20); 
-    const g = Math.round(232 - t * 67);   
-    const b = Math.round(170 - t * 138);
+    const r = Math.round(30 + t * 225); 
+    const g = Math.round(144 - t * 4);   
+    const b = Math.round(255 - t * 255);
     return { color: `rgb(${r}, ${g}, ${b})` };
   };
 
