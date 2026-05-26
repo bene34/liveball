@@ -107,8 +107,8 @@ const PPPTable = () => {
     const clamped = Math.max(-3.2, Math.min(3.2, val));
     const t = (clamped + 3.2) / 6.4; // 0 at -3.2, 0.5 at 0, 1 at +3.2
     const r = 255;
-    const g = Math.round(200 - t * 130); // 200 (light orange) at min, 70 (deep orange) at max
-    const b = Math.round(100 - t * 100); // fades out toward 0
+    const g = Math.round(160 - t * 110); // 200 (light orange) at min, 70 (deep orange) at max
+    const b = Math.round(60 - t * 60); // fades out toward 0
     return { color: `rgb(${r}, ${g}, ${b})` };
   };
 
