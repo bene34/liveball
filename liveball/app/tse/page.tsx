@@ -131,10 +131,10 @@ const PPPTable = () => {
     { key: "GamesPlayed", label: "GP", numeric: true },
     { key: "PPP", label: "TSE", numeric: true },
     { key: "RelativeTSE", label: "Relative TSE", numeric: true },
+    { key: "TSEAddPer75", label: "TSE Add / 75", numeric: true },
     { key: "PtsPer75", label: "Points / 75", numeric: true },
     { key: "TruePointsPer75", label: "True Points / 75", numeric: true },
     { key: "TrueScoringPossessionsPer75", label: "True Scoring Possessions Used / 75", numeric: true },
-    { key: "TSEAddPer75", label: "TSE Add / 75", numeric: true },
     { key: "ScoringTurnoversPer75", label: "Scoring TOV / 75", numeric: true },
   ];
 
