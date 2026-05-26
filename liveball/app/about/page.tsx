@@ -25,7 +25,7 @@ export default function About() {
                 rel="noopener noreferrer">
                 https://en.wikipedia.org/wiki/True_shooting_percentage
               </a>
-              ). It does a great job of capturing the efficiency of a player's shot attempts, but still serves as an estimate rather than reality (TPE also has more granular minor estimates covered in the future extension section, but gets closer to reality). The culprit for this is the 0.44 multiplier appended to free-throw attempts. It exists to account for the amount of possessions used on free throws, which eliminates technical free throws as well as and-1s. However, we have the actual play-by-play data available on these free throws, meaning we do not need this estimator.
+              ). It does a great job of capturing the efficiency of a player's shot attempts, but still serves as an estimate rather than reality (TSE also has more granular minor estimates covered in the future extension section, but gets closer to reality). The culprit for this is the 0.44 multiplier appended to free-throw attempts. It exists to account for the amount of possessions used on free throws, which eliminates technical free throws as well as and-1s. However, we have the actual play-by-play data available on these free throws, meaning we do not need this estimator.
             </p>
           </div>
         </div>
